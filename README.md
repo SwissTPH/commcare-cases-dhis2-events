@@ -65,7 +65,7 @@ If an `ERROR` occured (it could not post, major errors) it will send out a mail 
 - It would be possible to send coordinates instead of and orgunit ID. Open an issue for a feature request.
 - Python 2.7, no Python 3 support yet
 - Concise imports are done if the _Timezones_ of Commcare server **and** DHIS2 server are all UTC.
-- Tested with CommCases v3+, DHIS2 v2.22 - v2.25
+- Tested with CommCases List Cases API v3+, DHIS2 v2.22 - v2.25
 
 ## Testing
 
