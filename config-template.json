@@ -1,6 +1,6 @@
 {
   "commcare": {
-    "url": "https://example.commcarehq.org/a/icrc-almanach/api/v0.5/case/",
+    "url": "https://example.commcarehq.org/a/domain/api/v0.5/case/",
     "username": "commcare-username",
     "password": "commcare-password",
     "case_type": "CC_Case_Type",
