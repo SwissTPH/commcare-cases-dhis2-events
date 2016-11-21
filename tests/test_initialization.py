@@ -101,15 +101,12 @@ def events():
     return events
 
 
-def test_store_events(events):
-    starttime = '2010-09-03T00:00:00Z'
-    endtime = '2010-09-03T23:59:59Z'
-    store_events(events, starttime, endtime)
-    root_dir = os.path.dirname(os.path.abspath(__file__))[:-6]
-    filename = os.path.join(root_dir, 'logs', 'notposted', 'events_2010-09-03T00-00-00Z_2010-09-03T23-59-59Z.json')
-    assert os.path.isfile(filename)
-    os.remove(filename)
-
+def test_store_events(tmpdir, events):
+    starttime = '2010-09-03T00-00-00Z'
+    endtime = '2010-09-03T23-59-59Z'
+    p = tmpdir.mkdir("mydir").join("{}_{}.json".format(starttime, endtime))
+    p.write(json.dumps(events))
+    assert p.read() == json.dumps(events)
 
 def test_find_file():
     assert find('LICENSE.txt')
