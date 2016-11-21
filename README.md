@@ -1,5 +1,7 @@
 # CommCare Cases to DHIS2 Events
 
+[![Build Status](https://travis-ci.org/SwissTPH/commcare-cases-dhis2-events.svg?branch=master)](https://travis-ci.org/SwissTPH/commcare-cases-dhis2-events)
+
 Extract cases from [CommCare](https://www.commcarehq.org/home/) hourly and post them as anonymous events to [DHIS 2](https://www.dhis2.org). Store import failures as JSON files and report errors via mail.
 
 ## Installation
