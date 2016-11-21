@@ -1,0 +1,30 @@
+{
+  "commcare": {
+    "url": "https://example.commcarehq.org/a/icrc-almanach/api/v0.5/case/",
+    "username": "commcare-username",
+    "password": "commcare-password",
+    "case_type": "CC_Case_Type",
+    "cert": "mysslcertificate.crt.pem"
+  },
+  "dhis2": {
+    "url": "https://play.dhis2.org/demo/api/events",
+    "username": "admin",
+    "password": "district",
+    "program": "UID-of-program-without-registration"
+  },
+  "log": {
+    "fileloglevel": "logging.DEBUG",
+    "mailloglevel": "logging.ERROR"
+  },
+  "mail": {
+    "host": "smtp.gmail.com",
+    "from": "example@gmail.com",
+    "to": [
+      "me@company.com",
+      "othermailbox@company.com"
+    ],
+    "subject": "[COMMCARE->DHIS2] Error",
+    "username": "example@gmail.com",
+    "password": "smtp-password"
+  }
+}
