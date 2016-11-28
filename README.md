@@ -34,7 +34,7 @@ In `mapping-template.csv`, there are 3 columns:
 - `commcare_id`: the Commcare case property name. Commcare API: [List Cases (version 3+)](https://confluence.dimagi.com/pages/viewpage.action?pageId=12224287)
 - `dhis2_id`: The dataElement UID of DHIS2. DHIS2 API: [Sending events](https://dhis2.github.io/dhis2-docs/master/en/developer/html/webapi_events.html)
 - `filter`: Maybe there are Commcare properties that should not be sent to DHIS2, in this case put `EXCLUDE` in this column, `INCLUDE` otherwise. It's best to inspect the CommCare response for this.
-- Note that the CSV file must be delimited with `;`
+- Note that the CSV file must be delimited with `;` and **saved** as `mapping.csv`
 
 ## Usage
 
