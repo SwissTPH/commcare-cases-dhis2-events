@@ -8,13 +8,13 @@ setup(name='commcare-cases-dhis2-events',
       author='Swiss Tropical and Public Health Institute (Swiss TPH)',
       author_email='david.huser@unibas.ch',
       url='https://github.com/SwissTPH/commcare-cases-dhis2-events',
-      packages=find_packages(),
+      packages=['app'],
       install_requires=[
-            'requests>=2.11.1',
-            'python-dateutil>=2.5.3',
-            'pytest>=3.0.4'
+          'requests>=2.11.1',
+          'python-dateutil>=2.5.3',
+          'pytest>=3.0.4'
       ],
-    test_suite='pytest',
-    setup_requires=['pytest-runner'],
-    tests_require=['pytest']
-    )
+      test_suite='pytest',
+      setup_requires=['pytest-runner'],
+      tests_require=['pytest']
+      )
