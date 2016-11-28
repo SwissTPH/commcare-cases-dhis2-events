@@ -5,4 +5,4 @@ before_install:
   - pip install pytest
   - pip install requests
   - pip install python-dateutil
-script: python3 -m pytest tests
+script: py.test
