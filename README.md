@@ -14,8 +14,8 @@ Install python3 and pip (if not already), virtualenv and dependencies:
 - `source env/bin/activate`
 - `git clone https://github.com/SwissTPH/commcare-cases-dhis2-events`
 - `cd commcare-cases-dhis2-events`
-- `pip3 install -r requirements.txt` (this installs it in the user's home directory)
-- `python3 -m pytest tests` to see if everything is working.
+- `pip3 install -r requirements.txt`
+- `py.test` to see if everything is working.
 
 ## Configuration
 
