@@ -5,7 +5,7 @@ import logging.handlers
 import os
 import sys
 
-from app.helpers.mail import BufferingSMTPHandler
+from mail import BufferingSMTPHandler
 
 logger = logging.getLogger('__name__')
 

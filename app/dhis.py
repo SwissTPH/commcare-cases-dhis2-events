@@ -8,7 +8,7 @@ import json
 
 import requests
 
-from app.helpers.logger import *
+from helpers.logger import *
 
 
 class DhisHandler:

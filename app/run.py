@@ -4,14 +4,14 @@ import time
 
 from dateutil import parser
 
-from app.commcare import CommcareHandler
-from app.case import Case
-from app.dhis import DhisHandler, transform_cases_to_events
-from app.helpers.config import Configuration, install_mapping
-from app.helpers.filehandler import find, store_events, create_folders, read_json
-from app.helpers.logger import *
-from app.helpers.argparser import parse_args
-from app.timewindow import *
+from commcare import CommcareHandler
+from case import Case
+from dhis import DhisHandler, transform_cases_to_events
+from helpers.config import Configuration, install_mapping
+from helpers.filehandler import find, store_events, create_folders, read_json
+from helpers.logger import *
+from helpers.argparser import parse_args
+from timewindow import *
 
 
 def case_factory(commcare, timewindows):
