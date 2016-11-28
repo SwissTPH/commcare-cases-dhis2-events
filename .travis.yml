@@ -4,6 +4,6 @@ python:
   - "3.5"
 install:
   - "python setup.py develop"
-script: "python -m pytest tests"
+script: "python setup.py test"
 notifications:
   email: false

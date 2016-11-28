@@ -6,6 +6,8 @@ Extract cases from [CommCare](https://www.commcarehq.org/home/) hourly and post 
 
 ## Installation
 
+It is recommended to use Python 3 or Python>=2.7.9 due to various [SSL support warnings of urllib3](https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings). Both Python versions are supported though.
+
 Install python3 and pip (if not already), virtualenv and dependencies:
 
 - `sudo apt-get install python3-pip`
@@ -14,8 +16,8 @@ Install python3 and pip (if not already), virtualenv and dependencies:
 - `source env/bin/activate`
 - `git clone https://github.com/SwissTPH/commcare-cases-dhis2-events`
 - `cd commcare-cases-dhis2-events`
-- `pip3 install -r requirements.txt`
-- `py.test` to see if everything is working.
+- `python3 setup.py install`
+- `python3 setup.py test` to see if everything is working.
 
 ## Configuration
 
