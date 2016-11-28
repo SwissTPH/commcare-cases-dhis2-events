@@ -5,7 +5,10 @@ import logging.handlers
 import os
 import sys
 
-from mail import BufferingSMTPHandler
+try:
+    from mail import BufferingSMTPHandler
+except ImportError:
+    from app.helpers.mail import BufferingSMTPHandler
 
 logger = logging.getLogger('__name__')
 
