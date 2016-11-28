@@ -7,7 +7,10 @@ import json
 
 import requests
 
-from helpers.logger import *
+try:
+    from helpers.logger import *
+except ImportError:
+    from app.helpers.logger import *
 
 
 class CommcareHandler(object):

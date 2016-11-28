@@ -5,7 +5,5 @@ python:
 install:
   - "python setup.py develop"
 script: "python -m pytest tests"
-virtualenv:
-  system_site_packages: true
 notifications:
   email: false
