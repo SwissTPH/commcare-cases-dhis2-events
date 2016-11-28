@@ -13,5 +13,8 @@ setup(name='commcare-cases-dhis2-events',
             'requests>=2.11.1',
             'python-dateutil>=2.5.3',
             'pytest>=3.0.4'
-      ]
-      )
+      ],
+    test_suite='pytest',
+    setup_requires=['pytest-runner'],
+    tests_require=['pytest']
+    )
