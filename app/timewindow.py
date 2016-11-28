@@ -32,13 +32,10 @@ def get_windows_from_start_to_end(start_ts, end_ts):
     """ creating a list of window strings from a starting date until the last full hour"""
     window_list = []
     index = start_ts
-    print type(index)
-    print type(start_ts)
     while index < end_ts:
         s = index
         e = index + datetime.timedelta(hours=1, seconds=-1)
         minutes_diff = (end_ts - index).total_seconds() / 60.0
-        print minutes_diff
         if minutes_diff < 60.0:
             e = end_ts
         tw = create_timewindow(s, e)

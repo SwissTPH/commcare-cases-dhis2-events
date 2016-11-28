@@ -29,7 +29,7 @@ class Case:
         # standardize Boolean properties
         true_values = ['1', 1, True, 'yes', 'Yes', 'YES']
         false_values = ['0', 0, False, 'no', 'No', 'NO']
-        for k, v in properties.iteritems():
+        for k, v in properties.items():
             # standardize TRUE values
             if v in true_values:
                 properties[k] = True
@@ -37,14 +37,14 @@ class Case:
             elif v in false_values:
                 properties[k] = False
             # keep String values (e.g. for category options in DHIS2)
-            elif isinstance(v, basestring):
+            elif isinstance(v, str):
                 continue
 
         # remove NULL values
         filtered = {k: v for k, v in properties.items() if v != None}
 
         # set Case instance attribute for each property
-        for k, v in filtered.iteritems():
+        for k, v in filtered.items():
             setattr(self, k, v)
 
     def __iter__(self):

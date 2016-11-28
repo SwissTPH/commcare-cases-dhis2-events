@@ -56,8 +56,6 @@ def test_transform_cases_to_events(case_list, mapping):
         {'dataElement': 'ekfi2kdhfei', 'value': 2}
     ]
 
-    print events['events'][0]['dataValues']
-
     assert events['events'][0]['program'] == program
     assert events['events'][0]['storedBy'] == username
     assert events['events'][0]['eventDate'] == '2012-03-13'

@@ -38,7 +38,7 @@ class DhisHandler:
             else:
                 return req.text
         except requests.RequestException as e:
-            print e
+            print(e)
 
 
 def transform_cases_to_events(case_list, mapping, program, username):
@@ -47,7 +47,7 @@ def transform_cases_to_events(case_list, mapping, program, username):
     ignored_values = {'null', '', None}
     for case in case_list:
         data_values = []
-        for key, value in case.iteritems():
+        for key, value in case.items():
             # check if data element should be included
             dhis2_id = mapping['include'].get(key, None)
             # check if value is not empty / 'null' / None

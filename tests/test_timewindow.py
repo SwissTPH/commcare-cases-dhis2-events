@@ -18,7 +18,6 @@ def faked_now_1(monkeypatch):
 def test_get_all_windows_from_date_1(faked_now_1):
     now = datetime.datetime.now()
     windows = get_windows_from_start_to_end(start_ts=FAKE_START_1, end_ts=FAKE_NOW_1)
-    print windows
     assert now is FAKE_NOW_1
     # there should be 24 windows with each start- and endttime
     assert len(windows) == 2 * 24
@@ -70,7 +69,6 @@ def test_get_all_windows_from_date_3(faked_now_3):
     now = datetime.datetime.now()
     windows = get_windows_from_start_to_end(start_ts=FAKE_START_3, end_ts=FAKE_NOW_3)
     assert now is FAKE_NOW_3
-    print windows
     assert len(windows) == 3
     # check if windows contain really 2 per element
     assert len(windows[0]) == 2
@@ -84,7 +82,6 @@ FAKE_START_4 = datetime.datetime(2015, 1, 1, 0, 0, 0)
 def test_no_window_when_start_equal_end():
     now = datetime.datetime.now()
     windows = get_windows_from_start_to_end(start_ts=FAKE_START_4, end_ts=FAKE_START_4)
-    print windows
     assert len(windows) == 0
 
 # ---------------

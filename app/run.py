@@ -55,7 +55,6 @@ def main():
 
     # parse arguments
     args = parse_args(sys.argv[1:])
-    print args
 
     commcare = CommcareHandler(
         config['commcare']['url'],
@@ -68,7 +67,7 @@ def main():
     case_list = []
     now = datetime.datetime.now()
 
-    print "Timezone on this server: {}".format(now.tzname())
+    print("Timezone on this server: {}".format(now.tzname()))
 
     # ******** FROMDATE MODE *********
     if args.fromdate:

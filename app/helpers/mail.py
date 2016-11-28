@@ -75,7 +75,7 @@ class BufferingSMTPHandler(logging.handlers.BufferingHandler):
                 self.fromaddr, string.join(self.toaddrs, ","), self.subject)
                 for record in self.buffer:
                     s = self.format(record)
-                    print s
+                    print(s)
                     msg = msg + s + "\r\n"
                     self.counter += 1
                 if self.username:
