@@ -30,7 +30,7 @@ class Case:
         # standardize Boolean properties
         true_values = ['1', 1, True, 'yes', 'Yes', 'YES']
         false_values = ['0', 0, False, 'no', 'No', 'NO']
-        for k, v in iteritems(properties):
+        for (k, v) in iteritems(properties):
             # standardize TRUE values
             if v in true_values:
                 properties[k] = True
@@ -42,10 +42,10 @@ class Case:
                 continue
 
         # remove NULL values
-        filtered = {k: v for k, v in iteritems(properties) if v != None}
+        filtered = {k: v for (k, v) in iteritems(properties) if v != None}
 
         # set Case instance attribute for each property
-        for k, v in iteritems(filtered):
+        for (k, v) in iteritems(filtered):
             setattr(self, k, v)
 
     def __iter__(self):

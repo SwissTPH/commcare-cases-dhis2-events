@@ -52,7 +52,7 @@ def transform_cases_to_events(case_list, mapping, program, username):
     ignored_values = {'null', '', None}
     for case in case_list:
         data_values = []
-        for key, value in iteritems(case):
+        for (key, value) in iteritems(case):
             # check if data element should be included
             dhis2_id = mapping['include'].get(key, None)
             # check if value is not empty / 'null' / None
