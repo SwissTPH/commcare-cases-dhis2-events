@@ -41,7 +41,7 @@ class CommcareHandler(object):
 
         log_debug("Commcare request: {}".format(json.dumps(payload)))
         try:
-            req = requests.get(self.url, auth=(self.username, self.password), params=payload, cert=self.ssl_cert)
+            req = requests.get(self.url, auth=(self.username, self.password), params=payload, verify=self.ssl_cert)
             log_debug("{} CommCare response: {}".format(self.url, req.text))
             if req.status_code == 200:
                 return req.json()
