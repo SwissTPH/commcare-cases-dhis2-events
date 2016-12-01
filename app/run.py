@@ -67,8 +67,6 @@ def main():
     case_list = []
     now = datetime.datetime.now()
 
-    print("Timezone on this server: {}".format(now.tzname()))
-
     # ******** FROMDATE MODE *********
     if args.fromdate:
         log_info("Running in FROMDATE mode.")
