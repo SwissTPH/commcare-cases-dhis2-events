@@ -8,7 +8,7 @@ import sys
 try:
     from mail import BufferingSMTPHandler
 except ImportError:
-    from app.helpers.mail import BufferingSMTPHandler
+    from .mail import BufferingSMTPHandler
 
 logger = logging.getLogger('__name__')
 
