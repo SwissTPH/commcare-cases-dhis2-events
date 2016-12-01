@@ -48,6 +48,9 @@ class Case:
         for (k, v) in iteritems(filtered):
             setattr(self, k, v)
 
+    def items(self):
+        return zip(self.__dict__.values(), self.__dict__.keys())
+
     def __iter__(self):
         return self
 
