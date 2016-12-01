@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from filehandler import find
+from .filehandler import find
 
 import os
 import json
