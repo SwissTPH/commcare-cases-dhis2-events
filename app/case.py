@@ -49,7 +49,7 @@ class Case:
             setattr(self, k, v)
 
     def items(self):
-        return zip(self.__dict__.values(), self.__dict__.keys())
+        return self.__dict__.items()
 
     def __iter__(self):
         return self
