@@ -2,16 +2,33 @@
 
 [![Build Status](https://travis-ci.org/SwissTPH/commcare-cases-dhis2-events.svg?branch=master)](https://travis-ci.org/SwissTPH/commcare-cases-dhis2-events)
 
-Extract cases from [CommCare](https://www.commcarehq.org/home/) hourly and post them as anonymous events to [DHIS 2](https://www.dhis2.org). Store import failures as JSON files and report errors via mail.
+Simple ETL tool to extract cases from [CommCare](https://www.commcarehq.org/home/) hourly and post them as anonymous events to [DHIS 2](https://www.dhis2.org). Store import failures as JSON files and report errors via mail.
 
 ## Installation
 
 It is recommended to use Python 3 or Python>=2.7.9 due to various [SSL support warnings of urllib3](https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings). Both Python versions are supported though.
+This tool can be installed on the same instance as where DHIS2 runs.
+
+Create a new user with sudo rights (similar to DHIS2 installation instructions, you can also skip this and install it for `dhis` user):
+
+- `sudo useradd -d /home/ccde -m ccde -s /bin/bash`
+
+Then make the user able to perform operations temporarily as root user by invoking:
+
+- `sudo usermod -G sudo ccde`
+
+Set the account password and disable remote login for this user:
+
+- `passwd ccde`
+- `sudo passwd -l ccde`
+
+Change to this user:
+
+- `sudo su - ccde`
 
 Install python3 and pip (if not already), virtualenv and dependencies:
 
 - `sudo apt-get install python3-pip`
-- `virtualenv env`
 - `virtualenv -p python3 env`
 - `source env/bin/activate`
 - `git clone https://github.com/SwissTPH/commcare-cases-dhis2-events`
@@ -42,10 +59,10 @@ In `mapping-template.csv`, there are 3 columns:
 
 ## Usage
 
-There are different modes in how you can interact with this connector.
 
 ```
-$ python app/run.py --help
+(env)$ python3 app/run.py --help
+
 usage: run.py [-h] [-f DATE | -w TIMESTAMP TIMESTAMP] [-d]
 
 optional arguments:
@@ -57,14 +74,16 @@ optional arguments:
   -d or --dry           Dry-Run flag - Do not post to DHIS2, just save import file to logs/notposted/events.json
 ```
 
+To be able to close the SSH session and still log output to a file without shutting down the process -> `screen -L python3 app/run.py --fromdate 2016-06-30`
 ### Cronjob
 
-To install a cronjob which calls the Commcare API for all cases of the last hour (XX:00:00 to XX:59:59) at quarter past every hour:
+To install a cronjob for the routine mode (no arguments, grab cases of last hour):
 
 `crontab -e`
-and enter:
 
-`15 * * * * ~/env/bin/python3 ~/commcare-cases-dhis2-events/app/run.py`
+and enter
+
+`15 * * * * /home/ccde/env/bin/python3 /home/ccde/commcare-cases-dhis2-events/app/run.py`
 
 ## Failures / Log files
 
