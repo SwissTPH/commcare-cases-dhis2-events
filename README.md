@@ -25,13 +25,14 @@ Set the account password, disable remote login for this user and login with this
 `sudo su - ccde`
 
 #### App
-Install python3 and pip (if not already), virtualenv and dependencies:
+
+Prerequisite: Python3 installed (check with `which python3`)
 
 ```
-sudo apt-get install python3-pip
+sudo apt-get install python3-pip virtualenv
 virtualenv -p python3 env
 source env/bin/activate
-it clone https://github.com/SwissTPH/commcare-cases-dhis2-events
+git clone https://github.com/SwissTPH/commcare-cases-dhis2-events
 cd commcare-cases-dhis2-events
 python3 setup.py install
 ```
