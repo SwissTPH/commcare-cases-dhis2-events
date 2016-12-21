@@ -2,14 +2,14 @@
 
 [![Build Status](https://travis-ci.org/SwissTPH/commcare-cases-dhis2-events.svg?branch=master)](https://travis-ci.org/SwissTPH/commcare-cases-dhis2-events)
 
-Simple ETL tool to extract cases from [CommCare](https://www.commcarehq.org/home/) hourly and post them as anonymous events to [DHIS 2](https://www.dhis2.org). Store import failures as JSON files and report errors via mail.
+> Simple ETL tool to extract cases from [CommCare](https://www.commcarehq.org/home/) hourly and post them as anonymous events to [DHIS 2](https://www.dhis2.org). Store import failures as JSON files and report errors via mail.
 
 ## Installation
 
 It is recommended to use Python 3 or Python>=2.7.9 due to various [SSL support warnings of urllib3](https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings). Both Python versions are supported though.
 This tool can be installed on the same instance as where DHIS2 runs.
 
-### User
+#### User
 Create a new user with sudo rights (similar to DHIS2 installation instructions, you can also skip this and install it for `dhis` user):
 
 `sudo useradd -d /home/ccde -m ccde -s /bin/bash`
@@ -24,7 +24,7 @@ Set the account password, disable remote login for this user and login with this
 `sudo passwd -l ccde`
 `sudo su - ccde`
 
-### Tool installation
+#### App
 Install python3 and pip (if not already), virtualenv and dependencies:
 
 ```
@@ -32,7 +32,7 @@ sudo apt-get install python3-pip
 virtualenv -p python3 env
 source env/bin/activate
 it clone https://github.com/SwissTPH/commcare-cases-dhis2-events
-`cd commcare-cases-dhis2-events
+cd commcare-cases-dhis2-events
 python3 setup.py install
 ```
 
@@ -47,7 +47,7 @@ python3 setup.py install
 - In CommCare, each case needs a property `userLocationOrgUnitID` which contains the DHIS2 Organisation Unit UID where the Case took place. For other identifiers, check the DHIS2 API docs.
 - Run the tests: `python setup.py test` to see if everything is working.
 
-### Mapping file
+#### Mapping file
 
 In `mapping-template.csv`, there are 3 columns:
 
@@ -76,7 +76,7 @@ optional arguments:
 
 To be able to close the SSH session and still log output to a file without shutting down the process -> `screen -L python3 app/run.py --fromdate 2016-06-30`
 
-### Cronjob
+#### Cronjob
 
 To install a cronjob for the routine mode (no arguments, grab cases of last hour):
 
