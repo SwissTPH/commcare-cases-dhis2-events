@@ -9,34 +9,35 @@ Simple ETL tool to extract cases from [CommCare](https://www.commcarehq.org/home
 It is recommended to use Python 3 or Python>=2.7.9 due to various [SSL support warnings of urllib3](https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings). Both Python versions are supported though.
 This tool can be installed on the same instance as where DHIS2 runs.
 
+### User
 Create a new user with sudo rights (similar to DHIS2 installation instructions, you can also skip this and install it for `dhis` user):
 
-- `sudo useradd -d /home/ccde -m ccde -s /bin/bash`
+`sudo useradd -d /home/ccde -m ccde -s /bin/bash`
 
 Then make the user able to perform operations temporarily as root user by invoking:
 
-- `sudo usermod -G sudo ccde`
+`sudo usermod -G sudo ccde`
 
-Set the account password and disable remote login for this user:
+Set the account password, disable remote login for this user and login with this user:
 
-- `passwd ccde`
-- `sudo passwd -l ccde`
+`passwd ccde`
+`sudo passwd -l ccde`
+`sudo su - ccde`
 
-Change to this user:
-
-- `sudo su - ccde`
-
+### Tool installation
 Install python3 and pip (if not already), virtualenv and dependencies:
 
-- `sudo apt-get install python3-pip`
-- `virtualenv -p python3 env`
-- `source env/bin/activate`
-- `git clone https://github.com/SwissTPH/commcare-cases-dhis2-events`
-- `cd commcare-cases-dhis2-events`
-- `python3 setup.py install`
+```
+sudo apt-get install python3-pip
+virtualenv -p python3 env
+source env/bin/activate
+it clone https://github.com/SwissTPH/commcare-cases-dhis2-events
+`cd commcare-cases-dhis2-events
+python3 setup.py install
+```
 
 ## Testing
-- `python3 -m pytest --cov=app tests`
+`python3 -m pytest --cov=app tests`
 
 ## Configuration
 
@@ -59,7 +60,6 @@ In `mapping-template.csv`, there are 3 columns:
 
 ## Usage
 
-
 ```
 (env)$ python3 app/run.py --help
 
@@ -75,6 +75,7 @@ optional arguments:
 ```
 
 To be able to close the SSH session and still log output to a file without shutting down the process -> `screen -L python3 app/run.py --fromdate 2016-06-30`
+
 ### Cronjob
 
 To install a cronjob for the routine mode (no arguments, grab cases of last hour):
@@ -97,3 +98,8 @@ If an `ERROR` occured (it could not post, major errors) it will send out a mail 
 - It would be possible to send coordinates instead of and orgunit ID. Open an issue for a feature request.
 - Concise imports are done if the _Timezones_ of Commcare server **and** DHIS2 server are all UTC.
 - Tested with CommCases List Cases API v3+, DHIS2 v2.22 - v2.25
+
+## TODO
+
+- add more tests for better coverage
+- add Location (Latitude/Longitude) support
