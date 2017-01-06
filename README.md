@@ -32,7 +32,7 @@ Prerequisite: Python3 installed (check with `which python3`)
 
 ```
 sudo apt-get install python3-pip
-sudo pip install virtualenv
+sudo pip3 install virtualenv
 virtualenv -p python3 env
 source env/bin/activate
 git clone https://github.com/SwissTPH/commcare-cases-dhis2-events
