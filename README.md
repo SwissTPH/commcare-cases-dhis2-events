@@ -20,16 +20,19 @@ Then make the user able to perform operations temporarily as root user by invoki
 
 Set the account password, disable remote login for this user and login with this user:
 
-`passwd ccde`
-`sudo passwd -l ccde`
-`sudo su - ccde`
+```
+passwd ccde
+sudo passwd -l ccde
+sudo su - ccde
+```
 
 #### App
 
 Prerequisite: Python3 installed (check with `which python3`)
 
 ```
-sudo apt-get install python3-pip virtualenv
+sudo apt-get install python3-pip
+sudo pip install virtualenv
 virtualenv -p python3 env
 source env/bin/activate
 git clone https://github.com/SwissTPH/commcare-cases-dhis2-events
