@@ -46,7 +46,7 @@ class CommcareHandler(object):
             if req.status_code == 200:
                 return req.json()
             else:
-                log_error("Commcare error occured: {}".format(req.text))
+                log_error("Commcare error occured: {} response status code: {}".format(req.text, req.status_code))
         except requests.RequestException as e:
             log_error(e)
 
