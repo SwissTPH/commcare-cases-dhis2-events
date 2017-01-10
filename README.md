@@ -35,7 +35,7 @@ $ cd /home/ccde
 $ virtualenv -p python3 env
 $ git clone https://github.com/SwissTPH/commcare-cases-dhis2-events
 $ cd commcare-cases-dhis2-events
-$ source env/bin/activate
+$ source ../env/bin/activate
 (env)$ python3 setup.py install
 ```
 Note: omit `(env)$` above
