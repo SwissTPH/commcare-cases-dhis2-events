@@ -11,7 +11,7 @@ This tool can be installed on the same instance as where DHIS2 runs.
 
 #### User and system packages
 
-Login as `root` user and create a new user, disable login and install required packages:
+Login as `root` user and create a new user, disable remote login and install required system packages:
 
 ```
 # useradd -d /home/ccde -m ccde -s /bin/bash
