@@ -61,6 +61,7 @@ There are 3 columns `mapping-template.csv`:
 - `dhis2_id`: The dataElement UID of DHIS2. DHIS2 API: [Sending events](https://dhis2.github.io/dhis2-docs/master/en/developer/html/webapi_events.html)
 - `filter`: Maybe some Commcare properties received from its API should not be sent to DHIS2, in this case put `EXCLUDE` in this column, `INCLUDE` otherwise.
 - Note that the CSV file must be delimited with `;` and **saved** as `mapping.csv`
+- When changes in mappings are to be deployed, delete the old `mapping.json` file (because that is the file the app reads from). This will re-install the mapping.
 
 ## Usage
 
