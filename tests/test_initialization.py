@@ -3,7 +3,7 @@ import os
 
 import pytest
 
-from app.helpers.filehandler import read_json, store_events, find
+from app.helpers.filehandler import read_json, find
 
 
 def test_create_file(tmpdir):

@@ -8,7 +8,7 @@ from commcare import CommcareHandler
 from case import Case
 from dhis import DhisHandler, transform_cases_to_events
 from helpers.config import Configuration, install_mapping
-from helpers.filehandler import find, store_events, create_folders, read_json
+from helpers.filehandler import find, store_events, remove_file, create_folders, read_json
 from helpers.logger import *
 from helpers.argparser import parse_args
 from timewindow import *
@@ -114,7 +114,7 @@ def main():
                                        username=config['dhis2']['username'])
     no_of_events = len(events['events'])
     if no_of_events > 0:
-        store_events(events, file_start, file_end)
+        file_path = store_events(events, file_start, file_end)
         dhis = DhisHandler(
             config['dhis2']['url'],
             config['dhis2']['username'],
@@ -124,7 +124,9 @@ def main():
 
         if not args.dry:
             if no_of_events > 0:
-                dhis.post(events)
+                success = dhis.post(events)
+                if success:
+                    remove_file(file_path)
         else:
             log_info("Events were not posted to DHIS2 (Dry-Run Mode) but import file was stored at {}".format(
                 os.path.join(root_dir, 'logs', 'notposted')))

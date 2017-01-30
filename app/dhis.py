@@ -22,18 +22,22 @@ class DhisHandler:
         self.username = username
         self.password = password
 
-    # POSTs events in JSON format to DHIS2 API (api/events endpoint)
     def post(self, events):
+        """POST to DHIS2 API. Return true if success, false otherwise"""
         headers = {'Content-Type': 'application/json'}
 
         try:
             req = requests.post(self.url, auth=(self.username, self.password), headers=headers,
                                 data=json.dumps(events))
-            log_info(req.text)
             if req.status_code != 200:
                 log_error(req.text)
+                return False
+            else:
+                log_info(req.text)
+                return True
         except requests.RequestException as e:
             log_error(e)
+            return False
 
     def get(self):
         try:

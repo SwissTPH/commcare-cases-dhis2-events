@@ -33,6 +33,13 @@ def store_events(events, starttime, endtime):
     with open(events_path, 'w') as f:
         json.dump(events, f, indent=4)
 
+    return events_path
+
+
+def remove_file(path):
+    """Delete file"""
+    os.remove(path)
+
 
 def create_folders():
     """create folders for logs and event dump if they do not exist yet"""
