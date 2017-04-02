@@ -104,7 +104,7 @@ If an `ERROR` occured (it could not pull from CommCare or post to DHIS2, major e
 - Currently it supports only **100** Commcare cases / hour (CommCare limitation), but can be expanded by adjusting the timewindows and the corresponding cronjob.
 - Technically it would be possible to send coordinates instead of and orgunit ID.
 - Concise imports are done if the _Timezones_ of Commcare server **and** DHIS2 server are all UTC/GMT.
-- Tested with CommCases List Cases API v3+, DHIS2 v2.22 - v2.25
+- Tested with CommCases List Cases API v3+, DHIS2 v2.22 - v2.26
 
 ## TODO
 
