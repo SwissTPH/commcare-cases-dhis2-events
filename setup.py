@@ -1,10 +1,10 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
-_VERSION_ = '0.1'
+_VERSION_ = '0.1.1'
 
 setup(name='commcare-cases-dhis2-events',
       version=_VERSION_,
-      description='Extract cases from CommCareHQ and post them as events to DHIS2',
+      description='Routine ETL for CommCare cases --> DHIS2 events',
       author='Swiss Tropical and Public Health Institute (Swiss TPH)',
       author_email='david.huser@unibas.ch',
       url='https://github.com/SwissTPH/commcare-cases-dhis2-events',
