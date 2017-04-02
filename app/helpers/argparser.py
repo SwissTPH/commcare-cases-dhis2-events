@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import argparse
 from dateutil.parser import parse
 import datetime

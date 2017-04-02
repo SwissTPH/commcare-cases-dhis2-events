@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import json
 import os
 
@@ -29,7 +31,6 @@ def store_events(events, starttime, endtime):
     file_name = 'events_{}_{}.json'.format(starttime.replace(":", "-"), endtime.replace(":", "-"))
     events_path = os.path.join(root_dir, 'logs', 'notposted', file_name)
 
-    # dump event into a JSON file with a timestamp.
     with open(events_path, 'w') as f:
         json.dump(events, f, indent=4)
 
