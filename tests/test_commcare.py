@@ -104,7 +104,7 @@ class TestCommcareHandler:
     def cc_response_without(self):
         ex_response = {
             "meta": {
-                'total_count': None
+                'total_count': 0
             },
             "cases": []
         }

@@ -102,8 +102,8 @@ def events():
 
 
 def test_store_events(tmpdir, events):
-    starttime = '2010-09-03T00-00-00Z'
-    endtime = '2010-09-03T23-59-59Z'
+    starttime = '2010-09-03T00-00-00'
+    endtime = '2010-09-03T23-59-59'
     p = tmpdir.mkdir("mydir").join("{}_{}.json".format(starttime, endtime))
     p.write(json.dumps(events))
     assert p.read() == json.dumps(events)
@@ -114,5 +114,5 @@ def test_find_file():
 
 
 def test_not_find_file():
-    with pytest.raises(IOError) as e:
+    with pytest.raises(IOError):
         find("notexistent.txt")

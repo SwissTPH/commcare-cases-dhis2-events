@@ -17,7 +17,11 @@ def case_with_orgunit():
             "prop5": None,
             "prop6": "1",
             "prop7": "0",
-            "prop8": "foo"
+            "prop8": "foo",
+            "prop9": 25,
+            "prop10": "25",
+            "prop11": "9.9",
+            "prop12": 9.9
         }
     }
     return obj
@@ -34,6 +38,17 @@ def case_without_orgunit():
     }
     return obj
 
+@pytest.fixture
+def case_with_unrecognized_property_valuetype():
+    obj = {
+        "case_id": "45WKYXQRFFU3AT4Y022EX7HF2",
+        "date_closed": "2012-03-13T18:21:52Z",
+        "properties": {
+            "prop1":list(),
+        }
+    }
+    return obj
+
 
 def test_case_has_orgunit(case_with_orgunit):
     try:
@@ -44,7 +59,7 @@ def test_case_has_orgunit(case_with_orgunit):
 
 
 def test_case_has_no_orgunit(case_without_orgunit):
-    with pytest.raises(ValueError) as e:
+    with pytest.raises(ValueError):
         Case(case_without_orgunit)
 
 
@@ -70,3 +85,11 @@ def test_property_is_none(case_with_orgunit):
 def test_property_is_string(case_with_orgunit):
     c = Case(case_with_orgunit)
     assert c.__getitem__('prop8') == 'foo'
+    assert c.__getitem__('prop9') == '25'
+    assert c.__getitem__('prop10') == '25'
+    assert c.__getitem__('prop11') == '9.9'
+    assert c.__getitem__('prop12') == '9.9'
+
+def test_property_valueerror(case_with_unrecognized_property_valuetype):
+    with pytest.raises(ValueError):
+        Case(case_with_unrecognized_property_valuetype)
