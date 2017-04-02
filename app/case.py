@@ -1,6 +1,9 @@
+#!/usr/bin/env python
+
 import json
 
 from six import iteritems
+
 
 class Case:
     """ Class for converting Commcare cases into processable Case objects"""
@@ -27,7 +30,19 @@ class Case:
         else:
             properties.pop('userLocationOrgUnitID')
 
-        # standardize Boolean properties
+        properties = self.standardize_boolean(properties)
+
+        # remove NULL values
+        filtered = {k: v for (k, v) in iteritems(properties) if v is not None}
+
+        # set Case instance attribute for each property
+        for (k, v) in iteritems(filtered):
+            setattr(self, k, v)
+
+    @staticmethod
+    def standardize_boolean(properties):
+        """standardize Boolean properties"""
+
         true_values = ['1', 1, True, 'yes', 'Yes', 'YES']
         false_values = ['0', 0, False, 'no', 'No', 'NO']
         for (k, v) in iteritems(properties):
@@ -40,13 +55,13 @@ class Case:
             # keep String values (e.g. for category options in DHIS2)
             elif isinstance(v, str):
                 continue
-
-        # remove NULL values
-        filtered = {k: v for (k, v) in iteritems(properties) if v != None}
-
-        # set Case instance attribute for each property
-        for (k, v) in iteritems(filtered):
-            setattr(self, k, v)
+            elif isinstance(v, int) or isinstance(v, float):
+                properties[k] = str(v)
+            elif v is None:
+                continue
+            else:
+                raise ValueError("Unrecognized CommCare case property value {} of type {} ".format(v, type(v)))
+        return properties
 
     def items(self):
         return self.__dict__.items()
@@ -57,5 +72,5 @@ class Case:
     def __getitem__(self, key):
         return self.__dict__.get(key, None)
 
-    def to_json(self):
+    def __str__(self):
         return json.dumps(self, default=lambda o: o.__dict__)
