@@ -1,16 +1,16 @@
 #!/usr/bin/env python
 
 import time
-
 from dateutil import parser
 
-from commcare import CommcareHandler
 from case import Case
+from commcare import CommcareHandler
 from dhis import DhisHandler, transform_cases_to_events
+from helpers.argparser import parse_args
 from helpers.config import Configuration, install_mapping
 from helpers.filehandler import find, store_events, remove_file, create_folders, read_json
 from helpers.logger import *
-from helpers.argparser import parse_args
+from setup import _VERSION_
 from timewindow import *
 
 
@@ -18,8 +18,8 @@ def case_factory(commcare, timewindows):
     case_list = []
     no_of_tw = len(timewindows)
     if no_of_tw > 1:
-        print("Number of timewindows to check: {}".format(str(no_of_tw)))
-        print("Estimated time to complete: {} min".format(str(round(1.6 * no_of_tw / 60, 0))))
+        print("Number of CommCare calls: {}".format(no_of_tw))
+        print("Estimated time to complete: {} min".format(round(1.6 * no_of_tw / 60, 0)))
 
     for i, (starttime, endtime) in enumerate(timewindows):
         time.sleep(1.5)
@@ -53,6 +53,9 @@ def main():
     except IOError:
         pass
 
+    print("---\nCommcare cases to DHIS2 events V. {}\n".format(_VERSION_))
+    print("CommCare: {} @ {}\n DHIS2 URL: {} @ {}\n".format(config['commcare']['username'], config['commcare']['url'],
+                                                            config['dhis2']['username'], config['dhis2']['url']))
     # parse arguments
     args = parse_args(sys.argv[1:])
 

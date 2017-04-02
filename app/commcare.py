@@ -1,8 +1,5 @@
 #!/usr/bin/env python
-"""
-CommcareHandler API object
-calls the API with a GET request with specified parameters
-"""
+
 import json
 
 import requests
@@ -46,7 +43,7 @@ class CommcareHandler(object):
             if req.status_code == 200:
                 return req.json()
             else:
-                log_error("Commcare error occured: {} response status code: {}".format(req.text, req.status_code))
+                log_error("[HTTP {}]\nCommCare error occured: {}".format(req.status_code, req.text))
         except requests.RequestException as e:
             log_error(e)
 
@@ -56,7 +53,7 @@ class CommcareHandler(object):
         if response:
             no_of_objects = response['meta']['total_count']
             if no_of_objects > 0:
-                print("{} cases fetched".format(str(no_of_objects)))
+                print("{} cases fetched".format(no_of_objects))
                 return True
 
         log_info("No cases to fetch.")

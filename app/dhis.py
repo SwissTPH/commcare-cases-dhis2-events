@@ -1,9 +1,5 @@
 #!/usr/bin/env python
-"""
-DHIS2 API object
-calls the API with a post request with specified parameters
-returns DHIS2 response and the HTTP status code
-"""
+
 import json
 
 import requests
