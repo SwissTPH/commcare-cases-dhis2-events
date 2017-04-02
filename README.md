@@ -108,5 +108,5 @@ If an `ERROR` occured (it could not pull from CommCare or post to DHIS2, major e
 
 ## TODO
 
-- add more tests for better coverage
 - add Location (Latitude/Longitude) support
+- Major: write CommCare responses to local DB for manual queries and validations
