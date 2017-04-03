@@ -28,15 +28,14 @@ def config_file():
 
 
 def test_parse_id_filter(config_file):
-    out = parse_id_filter(config_file)
     try:
+        out = parse_id_filter(config_file)
         assert len(out) == 2
         assert len(out['include']) == 4
         assert len(out['exclude']) == 6
-        assert out['ageInYears'] == 'wiiDcsQ5pdQ'
-        assert out.get('childHeight', None) is None
-    except:
-        pass
+        assert out['include'].get('ageInYears', None) == 'wiiDcsQ5pdQ'
+        assert out['include'].get('childHeight', None) is None
+        assert out['exclude'].get('childHeight', None) == ''
     finally:
         import os
         # remove file from repository root

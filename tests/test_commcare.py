@@ -92,13 +92,9 @@ class TestCommcareHandler:
         return ex_response
 
     def test_cases_available(self, cc_response_with):
-        try:
-            cch = CommcareHandler(None, None, None, None, None)
-            cases_available = cch.cases_available(cc_response_with)
-            assert cases_available is True
-        except ValueError:
-            pass
-
+        cch = CommcareHandler(url="www.example.com/case/", username='test', password='test', case_type='test')
+        cases_available = cch.cases_available(cc_response_with)
+        assert cases_available
 
     @pytest.fixture
     def cc_response_without(self):
@@ -112,12 +108,9 @@ class TestCommcareHandler:
         return ex_response
 
     def test_no_cases_available(self, cc_response_without):
-        try:
-            cch = CommcareHandler(None, None, None, None, None)
-            cases_available = cch.cases_available(cc_response_without)
-            assert cases_available is not True
-        except ValueError:
-            pass
+        cch = CommcareHandler(url="www.example.com/case/", username='test', password='test', case_type='test')
+        cases_available = cch.cases_available(cc_response_without)
+        assert cases_available is not True
 
     @pytest.fixture
     def cc_response_none(self):
@@ -125,15 +118,12 @@ class TestCommcareHandler:
         return ex_response
 
     def test_none_cases(self, cc_response_none):
-        try:
-            cch = CommcareHandler(None, None, None, None, None)
-            cases_available = cch.cases_available(cc_response_none)
-            assert cases_available is not True
-        except ValueError:
-            pass
+        cch = CommcareHandler(url="www.example.com/case/", username='test', password='test', case_type='test')
+        cases_available = cch.cases_available(cc_response_none)
+        assert cases_available is not True
 
     def test_commcare_without_credentials(self):
-        with pytest.raises(ValueError) as e:
+        with pytest.raises(ValueError):
             CommcareHandler(None, None, None, None, None)
 
     def test_commcare_with_wrong_api_url(self):
