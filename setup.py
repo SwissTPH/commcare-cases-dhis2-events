@@ -1,12 +1,17 @@
+# -*- coding: utf-8 -*-
+import os
+
 from setuptools import setup
 
-_VERSION_ = '0.1.1'
+__version__ = ''
+with open(os.path.join('app', 'version.py')) as f:
+    exec (f.read())
 
 setup(name='commcare-cases-dhis2-events',
-      version=_VERSION_,
+      version=__version__,
       description='Routine ETL for CommCare cases --> DHIS2 events',
       author='Swiss Tropical and Public Health Institute (Swiss TPH)',
-      author_email='david.huser@unibas.ch',
+      author_email='david.huser@swisstph.ch',
       url='https://github.com/SwissTPH/commcare-cases-dhis2-events',
       packages=['app'],
       install_requires=[
