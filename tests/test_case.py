@@ -26,6 +26,17 @@ def case_with_orgunit():
     }
     return obj
 
+@pytest.fixture
+def case_without_case_id():
+    obj = {
+        "date_closed": "2012-03-13T18:21:52Z",
+        "properties": {
+            "userLocationOrgUnitID": "NC3WdxGafv5",
+            "prop1": 1
+        }
+    }
+    return obj
+
 
 @pytest.fixture
 def case_without_orgunit():
@@ -90,6 +101,12 @@ def test_property_is_string(case_with_orgunit):
     assert c.__getitem__('prop11') == '9.9'
     assert c.__getitem__('prop12') == '9.9'
 
+
 def test_property_valueerror(case_with_unrecognized_property_valuetype):
     with pytest.raises(ValueError):
         Case(case_with_unrecognized_property_valuetype)
+
+
+def test_case_id_present(case_without_case_id):
+    c = Case(case_without_case_id)
+    assert c.__getitem__('case_id') is None

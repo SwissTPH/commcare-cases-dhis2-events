@@ -18,7 +18,7 @@ class Case:
         else:
             self.case_date = case_date[:10]
 
-        self.case_id = obj['case_id']
+        self.case_id = obj.get('case_id', None)
 
         # get the properties of the Commcare case
         properties = obj['properties']

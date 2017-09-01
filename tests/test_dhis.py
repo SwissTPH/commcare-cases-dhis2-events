@@ -35,7 +35,8 @@ def mapping():
             "someflag": "hs3Wugcy4mt",
             "othervalue": "ju82ugJy7ut",
             "anotherone": "abc20daleld",
-            "lastone": "ekfi2kdhfei"
+            "lastone": "ekfi2kdhfei",
+            "case_id": "da82jkakdfz"
         }
     }
     return map
@@ -53,12 +54,13 @@ def test_transform_cases_to_events(case_list, mapping):
     expected_dv = [
         {'dataElement': 'hs3Wugcy4mt', 'value': False},
         {'dataElement': 'abc20daleld', 'value': 'text'},
-        {'dataElement': 'ekfi2kdhfei', 'value': 2}
+        {'dataElement': 'ekfi2kdhfei', 'value': 2},
+        {'dataElement': 'da82jkakdfz', 'value': '45WKYXQRFFU3AT4Y022EX7HF2'}
     ]
 
     assert events['events'][0]['program'] == program
     assert events['events'][0]['storedBy'] == username
     assert events['events'][0]['eventDate'] == '2012-03-13'
     assert any(map(lambda v: v in events['events'][0]['dataValues'], expected_dv))
-    assert len(events['events'][0]['dataValues']) == 3
+    assert len(events['events'][0]['dataValues']) == 4
     assert events['events'][0]['orgUnit'] == 'NC3WdxGafv5'
