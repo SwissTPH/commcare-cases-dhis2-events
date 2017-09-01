@@ -10,7 +10,7 @@ from helpers.argparser import parse_args
 from helpers.config import Configuration, install_mapping
 from helpers.filehandler import find, store_events, remove_file, create_folders, read_json
 from helpers.logger import *
-from setup import _VERSION_
+from version import __version__
 from timewindow import *
 
 
@@ -53,7 +53,7 @@ def main():
     except IOError:
         pass
 
-    print("---\nCommcare cases to DHIS2 events V. {}\n".format(_VERSION_))
+    print("---\nCommcare cases to DHIS2 events V. {}\n".format(__version__))
     print("CommCare: {} @ {}\n DHIS2 URL: {} @ {}\n".format(config['commcare']['username'], config['commcare']['url'],
                                                             config['dhis2']['username'], config['dhis2']['url']))
     # parse arguments
