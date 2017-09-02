@@ -22,7 +22,7 @@ def case_factory(commcare, timewindows):
         print("Estimated time to complete: {} min".format(round(1.6 * no_of_tw / 60, 0)))
 
     for i, (starttime, endtime) in enumerate(timewindows):
-        time.sleep(1.5)
+        time.sleep(0.5)
         print("{} - {}".format(starttime, endtime))
         response = commcare.get(starttime, endtime)
         if commcare.cases_available(response):
