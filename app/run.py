@@ -19,7 +19,7 @@ def case_factory(commcare, timewindows):
     no_of_tw = len(timewindows)
     if no_of_tw > 1:
         print("Number of CommCare calls: {}".format(no_of_tw))
-        print("Estimated time to complete: {} min".format(round(1.6 * no_of_tw / 60, 0)))
+        print("Estimated time to complete: {} min".format(round(0.75 * no_of_tw / 60, 0)))
 
     for i, (starttime, endtime) in enumerate(timewindows):
         time.sleep(0.5)
